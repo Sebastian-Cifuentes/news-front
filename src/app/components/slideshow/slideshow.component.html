@@ -1,0 +1,30 @@
+<mat-card class="slideshow">
+    <mat-card-header>
+        <mat-card-title>{{ publication.title }}</mat-card-title>
+    </mat-card-header>
+    <carousel [height]="255" [width]="320" [cellWidth]="320" [dots]="true">
+        <ng-container *ngFor="let image of publication.images">
+            <div class="carousel-cell">
+                <span class="slideshow__title--image">{{ image.title }}</span>
+                <img [src]="image.image" />
+            </div>
+        </ng-container>
+    </carousel>
+
+    <div class="slideshow__date">
+        <em>{{ publication.createdAt | date: 'M/d/yy' }}</em>
+    </div>
+
+    <mat-card-content>
+        <p>
+            {{ publication.desc }}
+        </p>
+    </mat-card-content>
+
+    <div class="slideshow__tags">
+        <div *ngFor="let tag of publication.tags" class="slideshow__tag">
+            {{ tag }}
+        </div>
+    </div>
+
+</mat-card>

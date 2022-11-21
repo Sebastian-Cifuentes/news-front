@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Agrega una nueva noticia</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form" action="" class="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Titulo</mat-label>
+            <input matInput formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="desc"></textarea>
+        </mat-form-field>
+        <small class="text-gray">Separa por , las etiquetas</small>
+        <mat-form-field appearance="fill">
+            <mat-label>Etiquetas</mat-label>
+            <input matInput formControlName="tags">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Tipo de publicación</mat-label>
+            <mat-select formControlName="publicationType" (selectionChange)="checkPublication($event)">
+                <mat-option value="normal">Normal</mat-option>
+                <mat-option value="carousel">Carousel</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <app-add-image [isCarousel]="publicationType.value === 'carousel'"></app-add-image>
+        <button *ngIf="publicationType.value === 'carousel'" type="button" class="btn btn__add-image" mat-raised-button color="primary" (click)="addImage(true)">Agregar imagen</button>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="onSubmit()">Guardar</button>
+</div>

@@ -1,0 +1,23 @@
+<mat-card class="normal">
+    <mat-card-header>
+        <mat-card-title>{{ publication.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="publication.images[0].image" [alt]="publication.title">
+
+    <div class="normal__date">
+        <em>{{ publication.createdAt | date: 'M/d/yy' }}</em>
+    </div>
+
+    <mat-card-content>
+        <p>
+            {{ publication.desc }}
+        </p>
+    </mat-card-content>
+
+    <div class="normal__tags">
+        <div *ngFor="let tag of publication.tags" class="normal__tag">
+            {{ tag }}
+        </div>
+    </div>
+
+</mat-card>

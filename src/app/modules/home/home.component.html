@@ -1,0 +1,17 @@
+<mat-toolbar>
+    <span class="toolbar">Breaking news</span>
+    <button mat-raised-button color="primary" (click)="createModal()">
+               <mat-icon>add</mat-icon>
+                Agregar noticia
+            </button>
+</mat-toolbar>
+<div class="container">
+    <ng-template appDynamicComponent></ng-template>
+</div>
+
+
+<div *ngIf="publications?.length === 0" class="no-posts">
+    <p class="no-posts__message">
+        No hay publicaciones aún creadas.
+    </p>
+</div>

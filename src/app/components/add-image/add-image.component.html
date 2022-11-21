@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+    <div formArrayName="images">
+        <div *ngFor="let image of images.controls; let i = index;">
+            <ng-container [formGroupName]="i">
+                <div class="add-image">
+                    <mat-form-field *ngIf="isCarousel" appearance="fill">
+                        <mat-label>Titulo</mat-label>
+                        <input matInput formControlName="title">
+                    </mat-form-field>
+                    <mat-form-field [ngClass]="{'w-100': !isCarousel}" appearance="fill">
+                        <mat-label>Imagen (URL)</mat-label>
+                        <input matInput formControlName="image">
+                    </mat-form-field>
+                    <button *ngIf="isCarousel" (click)="deleteImage(i)" mat-icon-button color="warn" aria-label="Delete image">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</form>
